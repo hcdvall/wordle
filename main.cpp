@@ -67,31 +67,15 @@ void testInputValidity(std::string& player_input, std::string* word_arr, int num
 {
     bool valid_word = false;
     while (!valid_word)
-    {
-        auto tmp_input = stringToArray(player_input);
+    {   
         for (int i = 0; i < number_of_lines; i++)
         {
-            auto tmp_word = stringToArray(word_arr[i]);
-
-            for (int j = 0; j < player_input.length(); j++)
+            if (word_arr[i] == player_input)
             {
-                if (tmp_word[j] != tmp_input[j])
-                {
-                    std::cout << tmp_input[j];
-                    valid_word = false;
-                    break;
-                }
-                else
-                {
-                    valid_word = true;
-                }
-            }
-            if (valid_word)
-            {
+                valid_word = true;
                 break;
-            }   
+            }
         }
-
         if (!valid_word)
         {
             if (player_input.length() != 5)
@@ -100,7 +84,7 @@ void testInputValidity(std::string& player_input, std::string* word_arr, int num
             }
             else
             {
-                std::cout << "The word does not exist.\nPlease Try again:\n";
+                std::cout << "The word does not exist or was not uppercase.\nPlease Try again:\n";
             }
             std::cin >> player_input;
         }
