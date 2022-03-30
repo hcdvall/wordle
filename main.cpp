@@ -85,6 +85,7 @@ void testInputValidity(std::string& player_input, std::string* word_arr, int num
             else
             {
                 std::cout << "The word does not exist or was not uppercase.\nPlease Try again:\n";
+                // feedback: a bit frustrating that it forces me to caps lock! Would be nice to have an auto-upper case feature!
             }
             std::cin >> player_input;
         }
@@ -156,7 +157,9 @@ int main()
         bool in_word = false;
         
         /* INNER GAME LOOP */
-        compareArrays(word_arr, game_word, game_word_str, win, in_word, number_of_lines);
+        compareArrays(word_arr, game_word, game_word_str, win, in_word, number_of_lines); // feedback: not sure I totally understand the need to have both
+                                                                                        // initial array and target word as arguments here. Seems like we only
+                                                                                        // need target word and references to set the result of the compare.
 
         if (win == true)
         {
